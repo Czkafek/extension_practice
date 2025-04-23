@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Tab blocker",
+    "description": "You can choose tabs that you wanna block e.g. if u use twitter (x) too much u just type in to the list 'x.com'",
+    "version": "1.0",
+    "permissions": ["storage", "tabs"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "icons/popup.png"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ]
+}
