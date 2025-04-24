@@ -9,7 +9,9 @@ document.getElementById("input").addEventListener("keydown", async (e) => {
     if(e.key === "Enter") {
         let domainName = document.getElementById("input").value;
         if(!list.includes(domainName)) {
+            console.log(list);
             list.push(domainName);
+            console.log(list);
             saveToStorage();
             renderList();
         }
