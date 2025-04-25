@@ -2,7 +2,9 @@
 let list = [];
 chrome.storage.local.get("list").then(async result => {
     // Pobiera liste stron do wyświetlenia jako zablokowane -> jeśli jest pusta to pusta, jak nie jest pusta to nie jest pusta
-    let list = result.list || [];
+    list = result.list || [];
+    console.log(result.list);
+    renderList();
 });
 
 document.getElementById("input").addEventListener("keydown", async (e) => {
