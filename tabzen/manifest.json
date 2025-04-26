@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "TabZen",
+    "version": "0.1",
+    "description": "TabZen is web extension for addicts. Just select page you are addicted of, then choose settings and you are good to go",
+    "permissions": ["storage", "tabs"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "icons/icon.png"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ]
+}
