@@ -1,0 +1,1 @@
+// Wysyła zapytanie do background.js odnośnie odwiedzonej karty i następnie, sprawdza czy ta karta jest na liście, jeśli jest to odpowiedni timer pokazuje, odpowiedni streak itd.

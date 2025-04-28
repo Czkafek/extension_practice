@@ -1,0 +1,1 @@
+// Daje listenera na zapytanie od contentu i zwraca nazwę domeny obecnej karty
