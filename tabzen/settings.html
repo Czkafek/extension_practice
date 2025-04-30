@@ -4,10 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TabZen Settings</title>
+    <style>
+        body {
+            font-family: inter;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 24px;
+        }
+        #content {
+            display: flex;
+            flex-direction: column;
+            row-gap: 12px;
+        }
+        .line {
+            display: grid;
+            grid-template-columns: 150px 200px 150px 200px 200px 39px;
+            column-gap: 16px;
+            font-size: 20px;
+        }
+        .line p {
+            padding: 0px 12px;
+        }
+    </style>
 </head>
 <body>
     <h1>TabZen Settings</h1>
-    <div id="list"></div>
-    <input type="text">
+    <div id="content">
+        <div class="line">
+            <p>Domena</p>
+            <p>Tryb zablokowania</p>
+            <p>ilość wejść</p>
+            <p>Długość wejścia</p>
+            <p>Długość wejścia</p>
+        </div>
+    </div>
 </body>
 </html>
