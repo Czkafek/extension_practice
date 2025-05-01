@@ -7,6 +7,8 @@
     <style>
         body {
             font-family: inter;
+            color: #0d0d0d;
+            padding: 0px 32px;
         }
         h1 {
             font-size: 48px;
@@ -19,12 +21,67 @@
         }
         .line {
             display: grid;
-            grid-template-columns: 150px 200px 150px 200px 200px 39px;
+            grid-template-columns: 174px 224px 174px 224px 224px 39px;
             column-gap: 16px;
             font-size: 20px;
         }
         .line p {
             padding: 0px 12px;
+            margin: 0px;
+        }
+        .line input, .line select {
+            font-size: 20px;
+            padding: 7px 12px 8px 12px;
+            color: #0d0d0d;
+            background-color: #FAFAFA;
+            border: 1px solid #d1d1d1;
+            border-radius: 4px;
+            outline-color: #b1b1b1;
+        }
+        .line #img {
+            width: 39px;
+            height: 39px;
+            background-color: #8779FF;
+            border-radius: 4px;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.2s;
+        }
+        .line #img:hover {
+            opacity: 0.8;
+        }
+        .line #img:active {
+            opacity: 0.6;
+        }
+        .line button {
+            font-size: 20px;
+            color: #fff;
+            font-weight: 600;
+            background-color: #8779FF;
+            border-radius: 4px;
+            border: none;
+            transition: opacity 0.2s;
+        }
+        .line button:hover {
+            opacity: 0.8;
+        }
+        .line button:active {
+            opacity: 0.6;
+        }
+        .line img {
+            width: 28px;
+            height: 28px;
+        }
+        #hr {
+            width: 100%;
+            max-width: 1139px;
+            height: 1px;
+            background-color: #707070;
+        }
+        option:first {
+            color: #707070;
         }
     </style>
 </head>
@@ -36,8 +93,37 @@
             <p>Tryb zablokowania</p>
             <p>ilość wejść</p>
             <p>Długość wejścia</p>
-            <p>Długość wejścia</p>
+            <p>Długość przerwy</p>
+        </div>
+        <div id="hr"></div>
+        <div class="line">
+            <input type="text" value="youtube">
+            <select id="tryb">
+                <option value="całkowity" selected>całkowity</option>
+                <option value="przepustka">przepustka</option>
+            </select>
+            <input type="text" disabled value="brak">
+            <input type="text" disabled value="brak">
+            <input type="text" disabled value="brak">
+            <div id="img"><img src="icons/trash.svg" alt=""></div>
+        </div>
+        <div class="line">
+            <input type="text" value="instagram">
+            <select id="tryb">
+                <option value="całkowity">całkowity</option>
+                <option value="przepustka" selected>przepustka</option>
+            </select>
+            <input type="text" value="10">
+            <input type="text" value="10 minut">
+            <input type="text" value="10 sekund">
+            <div id="img"><img src="icons/trash.svg" alt=""></div>
+        </div>
+        <div class="line">
+            <input id="addDomain" type="text" placeholder="Domena...">
+            <button id="submit">Zatwierdź</button>
         </div>
     </div>
+
+    <script src="settings.js"></script>
 </body>
 </html>
