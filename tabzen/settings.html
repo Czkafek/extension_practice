@@ -12,7 +12,7 @@
         }
         h1 {
             font-size: 48px;
-            margin-bottom: 24px;
+            margin-bottom: 48px;
         }
         #content {
             display: flex;
@@ -21,7 +21,7 @@
         }
         .line {
             display: grid;
-            grid-template-columns: 174px 224px 174px 224px 224px 39px;
+            grid-template-columns: 174px 224px 134px 184px 194px 39px;
             column-gap: 16px;
             font-size: 20px;
         }
@@ -38,7 +38,7 @@
             border-radius: 4px;
             outline-color: #b1b1b1;
         }
-        .line #img {
+        .line .img {
             width: 39px;
             height: 39px;
             background-color: #8779FF;
@@ -49,10 +49,10 @@
             align-items: center;
             transition: opacity 0.2s;
         }
-        .line #img:hover {
+        .line .img:hover {
             opacity: 0.8;
         }
-        .line #img:active {
+        .line .img:active {
             opacity: 0.6;
         }
         .line button {
@@ -74,6 +74,16 @@
             width: 28px;
             height: 28px;
         }
+        .field {
+            display: grid;
+            align-items: center;
+            grid-template-columns: 65px 1fr;
+            width: 100%;
+        }
+        .field p {
+            margin: 0px;
+            width: 100%;
+        }
         #hr {
             width: 100%;
             max-width: 1139px;
@@ -87,7 +97,6 @@
 </head>
 <body>
     <h1>TabZen Settings</h1>
-    <p>test</p>
     <div id="content">
         <div class="line">
             <p>Domena</p>
@@ -104,9 +113,32 @@
                 <option value="przepustka">przepustka</option>
             </select>
             <input type="text" disabled value="brak">
-            <input type="text" disabled value="brak">
-            <input type="text" disabled value="brak">
+            <div class="field">
+                <input type="text" disabled value="brak">
+                <p>minut</p>
+            </div>
+            <div class="field">
+                <input type="text" disabled value="brak">
+                <p>sekund</p>
+            </div>
             <div id="img"><img src="icons/trash.svg" alt=""></div>
+        </div>
+        <div class="line">
+            <input type="text" value="instagram">
+            <select id="tryb">
+                <option value="całkowity">całkowity</option>
+                <option value="przepustka" selected>przepustka</option>
+            </select>
+            <input type="text" disabled value="10">
+            <div class="field">
+                <input type="text" disabled value="10">
+                <p>minut</p>
+            </div>
+            <div class="field">
+                <input type="text" disabled value="10">
+                <p>sekund</p>
+            </div>
+            <div class="img"><img src="icons/trash.svg" alt=""></div>
         </div>
         <div class="line">
             <input type="text" value="instagram">

@@ -1,4 +1,6 @@
 async function checkBlockedTab() {
+    console.log(chrome);
+    console.log("Hej");
     const tabResult = await new Promise(resolve => {
         chrome.runtime.sendMessage({ type: 'get-current-tab' }, resolve)
     });
