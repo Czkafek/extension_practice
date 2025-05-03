@@ -119,6 +119,8 @@ async function init() {
             })
         })
     })
+
+    // Jeszcze eventlistener inputów (2 funkcje)
 }
 
 init();
