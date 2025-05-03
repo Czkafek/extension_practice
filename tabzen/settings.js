@@ -1,16 +1,3 @@
-/*let list = [{
-    domain: "youtube",
-    mode: "całkowity",
-    amount: "brak",
-    enterSpan: "brak",
-    breakSpan: "brak"
-},{
-    domain: "instagram",
-    mode: "przepustka",
-    amount: "10",
-    enterSpan: "10",
-    breakSpan: "10"
-}]*/
 let list = [];
 
 async function init() {
@@ -36,16 +23,6 @@ async function init() {
             isDisabled = "";
             type = "number";
         }
-        /*string += `<div class="line">
-                        <input type="text" value="${element.domain}">
-                        <select id="tryb">
-                            ${select}
-                        </select>
-                        <input type="text" ${isDisabled} value="${element.amount}">
-                        <input type="text" ${isDisabled} value="${element.enterSpan}">
-                        <input type="text" ${isDisabled} value="${element.breakSpan}">
-                        <div id="img"><img src="icons/trash.svg" alt=""></div>
-                    </div>`;*/
         string += `<div class="line"> 
                         <input type="text" value="${element.domain}">
                         <select class="tryb">
@@ -140,47 +117,6 @@ async function init() {
                 console.log("Zmieniono typ domeny i zapisano listę");
                 init();
             })
-            /*
-            let string;
-            if(e.target.value === "całkowity") {
-                string =    `<div class="line">
-                                    <input type="text" value="${allChildren[0].value}">
-                                    <select class="tryb">
-                                        <option value="całkowity" selected>całkowity</option>
-                                        <option value="przepustka">przepustka</option>
-                                    </select>
-                                    <input type="text" disabled value="brak">
-                                    <div class="field"> 
-                                        <input type="text" disabled value="brak">
-                                        <p>minut</p>
-                                    </div>
-                                    <div class="field">
-                                        <input type="text" disabled value="brak">
-                                        <p>sekund</p>
-                                    </div>
-                                    <div class="img" data-key="${trash[0].dataset.key}"><img src="icons/trash.svg" alt=""></div>
-                                </div>`
-            } else {
-                console.log("Hej");
-                string =    `<div class="line">
-                                    <input type="text" value="${allChildren[0].value}">
-                                    <select class="tryb">
-                                        <option value="całkowity">całkowity</option>
-                                        <option value="przepustka" selected>przepustka</option>
-                                    </select>
-                                    <input type="number" disabled value="10">
-                                    <div class="field"> 
-                                        <input type="number" disabled value="10">
-                                        <p>minut</p>
-                                    </div>
-                                    <div class="field">
-                                        <input type="number" disabled value="10">
-                                        <p>sekund</p>
-                                    </div>
-                                    <div class="img" data-key="${trash[0].dataset.key}"><img src="icons/trash.svg" alt=""></div>
-                                </div>`
-            }
-            container.innerHTML = string;*/
         })
     })
 }
