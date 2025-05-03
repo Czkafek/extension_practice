@@ -28,13 +28,13 @@ async function init() {
                         <select class="tryb">
                             ${select}
                         </select>
-                        <input type="${type}" ${isDisabled} value="${element.amount}">
+                        <input class="input" data-key="${element.id}" data-name="amount" type="${type}" ${isDisabled} value="${element.amount}">
                         <div class="field"> 
-                            <input type="${type}" ${isDisabled} value="${element.enterSpan}">
+                            <input class="input" data-key="${element.id}" data-name="enterSpan" type="${type}" ${isDisabled} value="${element.enterSpan}">
                             <p>minut</p>
                         </div>
                         <div class="field">
-                            <input type="${type}" ${isDisabled} value="${element.breakSpan}">
+                            <input class="input" data-key="${element.id}" data-name="breakSpan" type="${type}" ${isDisabled} value="${element.breakSpan}">
                             <p>sekund</p>
                         </div>
                         <div class="img" data-key="${element.id}"><img src="icons/trash.svg" alt=""></div>
@@ -121,6 +121,22 @@ async function init() {
     })
 
     // Jeszcze eventlistener inputów (2 funkcje)
+    document.querySelectorAll(".line .input").forEach(input => {
+        input.addEventListener("focusout", (e) => {
+            
+            list = list.map(element => {
+                if(element.id == e.target.dataset.key) {
+                    element[e.target.dataset.name] = e.target.value;
+                    return element;
+                }
+                return element;
+            });
+            chrome.storage.local.set({ list }, () => {
+                console.log("field has been changed and list has been saved");
+                init();
+            })
+        })
+    })
 }
 
 init();
