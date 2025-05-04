@@ -10,12 +10,15 @@
             text-align: center;
         }
         #container {
+            position: fixed;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 100%;
-            height: 90vh;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
         }
         #title {
             font-weight: 500;
@@ -23,8 +26,15 @@
         }
         #domain {
             margin: 0px;
-            padding-bottom: 96px;
+            padding-bottom: 40px;
             color: #cc2828;
+        }
+        #amount {
+            font-size: 32px;
+            padding-bottom: 40px;
+        }
+        #blocker_span {
+            font-weight: 500;
         }
         h1 {
             font-size: 48px;
@@ -45,6 +55,7 @@
     <div id="container">
         <h1 id="title">Zablokowana domena:</h1>
         <h1 id="domain">youtube</h1>
+        <h2 id="amount"><span id="blocker_span">Ilość wejść:</span> 5/5</h2>
 
         <h3>Przerwa:</h3>
         <h2 id="timer">10s</h2>

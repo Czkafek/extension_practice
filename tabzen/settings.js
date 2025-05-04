@@ -56,10 +56,11 @@ async function init() {
                 id: newId,
                 domain: domain,
                 mode: "przepustka",
-                amount: "10",
-                enterSpan: "10",
-                breakSpan: "10",
-                lastSave: getCurrentDay(new Date())
+                amount: 10,
+                enterSpan: 10,
+                breakSpan: 10,
+                lastSave: getCurrentDay(new Date()),
+                visitCount: 0
             })
             saveList("Dodano i zapisano nową domenę");
         }
@@ -77,35 +78,26 @@ async function init() {
     document.querySelectorAll(".tryb").forEach(element => {
         element.addEventListener("change", e => {
             const container = e.target.parentElement;
-            const allChildren = container.querySelectorAll("input");
             const trash = container.querySelectorAll(".img");
             if(e.target.value === "całkowity") {
                 list = list.map(element => {
                     if(element.id == trash[0].dataset.key) {
-                        element = {
-                            id: trash[0].dataset.key,
-                            domain: allChildren[0].value,
-                            mode: "całkowity",
-                            amount: "brak",
-                            enterSpan: "brak",
-                            breakSpan: "brak",
-                            lastSave: getCurrentDay(new Date())
-                        }
+                        element.mode = "całkowity";
+                        element.amount = "brak";
+                        element.enterSpan = "brak";
+                        element.breakSpan = "brak";
+                        element.lastSave = getCurrentDay(new Date());
                     }
                     return element;
                 })
             } else {
                 list = list.map(element => {
                     if(element.id == trash[0].dataset.key) {
-                        element = {
-                            id: trash[0].dataset.key,
-                            domain: allChildren[0].value,
-                            mode: "przepustka",
-                            amount: "10",
-                            enterSpan: "10",
-                            breakSpan: "10",
-                            lastSave: getCurrentDay(new Date())
-                        }
+                        element.mode = "przepustka";
+                        element.amount = 10;
+                        element.enterSpan = 10;
+                        element.breakSpan = 10;
+                        element.lastSave = getCurrentDay(new Date());
                     }
                     return element;
                 })
