@@ -7,7 +7,7 @@ async function checkBlockedTab() {
     console.log(tabResult.url);
 
     const hostname = new URL(tabResult.url).hostname;
-    const domain = hostname.split('.')[1];
+    const domain = hostname.split('.')[0];
     console.log(hostname);
     console.log(domain);
 
@@ -61,7 +61,7 @@ async function checkBlockedTab() {
             padding-bottom: 24px;
             font-weight: 500;
         }
-        #blocker_timer {
+        #blocker_timerContainer {
             font-size: 40px;
         }
     `;
@@ -74,10 +74,24 @@ async function checkBlockedTab() {
                         <h2 id="blocker_amount"><span id="blocker_span">Ilość wejść:</span> ${found.visitCount}/${found.amount}</h2>
 
                         <h3 id="blocker_brake">Przerwa:</h3>
-                        <h2 id="blocker_timer">${found.breakSpan}</h2>
+                        <h2 id="blocker_timerContainer"><span id="blocker_timer">${found.breakSpan}</span>s</h2>
                     </div>
                     `
     document.body.innerHTML += string;
+
+    const timer = document.getElementById("blocker_timer");
+    const intervalId = setInterval(() => {
+        if(timer.innerHTML == 1) {
+            clearInterval(intervalId);
+        }
+        else {
+            timer.innerHTML = timer.innerHTML - 1;
+        }
+    }, 1000);
+}
+
+const timer = () => {
+
 }
 
 checkBlockedTab();
