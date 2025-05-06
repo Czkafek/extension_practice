@@ -80,18 +80,21 @@ async function checkBlockedTab() {
     document.body.innerHTML += string;
 
     const timer = document.getElementById("blocker_timer");
-    const intervalId = setInterval(() => {
-        if(timer.innerHTML == 1) {
-            clearInterval(intervalId);
-        }
-        else {
-            timer.innerHTML = timer.innerHTML - 1;
-        }
-    }, 1000);
+    await awaitForTimer(timer);
+
+    document.getElementById("blocker_container").style.display = "none";
 }
 
-const timer = () => {
-
+const awaitForTimer = (timer) => {
+    return new Promise(resolve => {
+        const intervalId = setInterval(() => {
+            timer.innerHTML = timer.innerHTML - 1;
+            if(timer.innerHTML == 0) {
+                clearInterval(intervalId);
+                resolve();
+            }
+        }, 1000);
+    })
 }
 
 checkBlockedTab();
