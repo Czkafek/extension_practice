@@ -140,6 +140,8 @@ const saveList = (message) => {
     })
 }
 
+
+// Te funkcje do content.js
 const getCurrentDay = (date) => {
     const year = date.getFullYear();
     const month = date.getMonth();

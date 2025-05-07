@@ -27,7 +27,7 @@
         #domain {
             margin: 0px;
             padding-bottom: 40px;
-            color: #cc2828;
+            color: #8779FF;
         }
         #amount {
             font-size: 32px;
@@ -49,6 +49,33 @@
             padding-bottom: 24px;
             font-weight: 500;
         }
+        #blocker_button {
+            margin-top: 64px;
+            font-size: 24px;
+            background-color: #8779FF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            width: 300px;
+            padding: 8px;
+            transition: opacity 0.2s;
+        }
+        #blocker_button:hover {
+            opacity: 0.8;
+        }
+        #blocker_button:active {
+            opacity: 0.6;
+        }
+        /*#blocker_button {
+            margin-top: 64px;
+            font-size: 24px;
+            background-color: #fff;
+            color: #949494;
+            border: 1px solid #949494;
+            width: 300px;
+            padding: 8px;
+            border-radius: 4px;
+        }*/
     </style>
 </head>
 <body>
@@ -59,6 +86,7 @@
 
         <h3>Przerwa:</h3>
         <h2 id="timer">10s</h2>
+        <button id="blocker_button">Wejdź</button>
     </div>
 </body>
 </html>
