@@ -78,6 +78,18 @@ async function checkBlockedTab() {
     
     if(!found) return true;
 
+    const today = getCurrentDay(new Date());
+    if (isFromPreviousDay(found.lastSave)) {
+        list = list.map(element => {
+            if(element.id === found.id) {
+                element.visitCount = 0;
+                element.lastSave = today;
+            }
+            return element;
+        })
+        saveList("Ilość odwiedzeń została zaktualizowana do 0 i lista zapisana");
+    };
+
     const style = document.createElement("style");
     style.innerHTML = `
         #blocker_container {
@@ -211,3 +223,25 @@ const awaitForTimer = (timer) => {
     console.log("Skrypt uruchomiony - DOM załadowany");
     tryInitialize();
 })();
+
+const getCurrentDay = (date) => {
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const day = date.getDate();
+
+    return new Date(year, month, day, 0, 0, 0, 0);
+}
+
+const isFromPreviousDay = (previousDate) => {
+    const currentDate = getCurrentDay(new Date());
+    const timeDifference = currentDate.getTime() - previousDate.getTime();
+    const daysDifference = timeDifference / (24*60*60*1000);
+    return daysDifference === 1;
+}
+
+const saveList = (message) => {
+    chrome.storage.local.set({ list }, () => {
+        console.log(message);
+        init();
+    })
+}

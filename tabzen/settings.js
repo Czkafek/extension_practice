@@ -139,31 +139,3 @@ const saveList = (message) => {
         init();
     })
 }
-
-
-// Te funkcje do content.js
-const getCurrentDay = (date) => {
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const day = date.getDate();
-
-    return new Date(year, month, day, 0, 0, 0, 0);
-}
-
-const isFromPreviousDay = (previousDate) => {
-    const currentDate = getCurrentDay(new Date());
-    const timeDifference = currentDate.getTime() - previousDate.getTime();
-    const daysDifference = timeDifference / (24*60*60*1000);
-    return daysDifference === 1;
-}
-
-const checkDateFunctions = () => {
-    const today = getCurrentDay(new Date());
-    const yesterdayDate = new Date(today.getTime() - 24 * 60 * 60 * 1000);
-
-    console.log("Today:", today.getTime());
-    console.log("Yesterday:", yesterdayDate.getTime());
-    console.log("is yesterday from previous day:", isFromPreviousDay(yesterdayDate));
-}
-checkDateFunctions();
-init();
