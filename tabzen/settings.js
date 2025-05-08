@@ -10,6 +10,7 @@ async function init() {
     let string = `<div class="line"><p>Domena</p><p>Tryb zablokowania</p><p>ilość wejść</p><p>Długość wejścia</p><p>Długość przerwy</p></div><div id="hr"></div>`
 
     list.forEach(element => {
+        console.log(element);
         let select, isDisabled;
         if(element.mode === 'całkowity') {
             select = `<option value="całkowity" selected>całkowity</option>
@@ -70,7 +71,7 @@ async function init() {
         btn.addEventListener("click", (e) => {
             const key = e.currentTarget.dataset.key;
             list = list.filter( element => element.id != key );
-            console.log()
+            console.log("yeah");
             saveList("Usunięto i zapisano listę domen");
         });
     });
@@ -139,3 +140,13 @@ const saveList = (message) => {
         init();
     })
 }
+
+const getCurrentDay = (date) => {
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const day = date.getDate();
+
+    return new Date(year, month, day, 0, 0, 0, 0);
+}
+
+init();

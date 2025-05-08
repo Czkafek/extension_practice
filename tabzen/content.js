@@ -78,8 +78,59 @@ async function checkBlockedTab() {
     
     if(!found) return true;
 
+    const blockerDiv = document.createElement("div");
+    blockerDiv.id = `blocker_container`;
+    const style = document.createElement("style");
+
+    if(found.mode === "całkowity") {
+        style.innerHTML = `
+            #blocker_container {
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 9999;
+            background-color: #fff;
+            }
+            #blocker_title {
+                font-weight: 500;
+                margin: 0px;
+                font-size: 48px;
+            }
+            #blocker_domain {
+                margin: 0px;
+                padding-bottom: 40px;
+                color: #8779FF;
+                font-size: 48px;
+            }
+            #blocker_slogan {
+                font-size: 32px;
+                padding-bottom: 40px;
+                font-size: 40px;
+                font-weight: 500;
+                text-decoration: underline;
+                text-decoration-color: #8779FF;
+            }
+        `;
+        document.head.appendChild(style);
+
+        blockerDiv.innerHTML = `<h1 id="blocker_title">Zablokowana domena:</h1>
+                            <h1 id="blocker_domain">${domain}</h1>
+                            <h2 id="blocker_slogan">Nie potrzebujesz tego przecież</h2>`
+
+        document.body.appendChild(blockerDiv);
+        console.log("Element blokady dodany do DOM");
+
+        return true;
+    }
+
     const today = getCurrentDay(new Date());
-    if (isFromPreviousDay(found.lastSave)) {
+    if (isFromPreviousDay(new Date(found.lastSave))) {
         list = list.map(element => {
             if(element.id === found.id) {
                 element.visitCount = 0;
@@ -90,7 +141,6 @@ async function checkBlockedTab() {
         saveList("Ilość odwiedzeń została zaktualizowana do 0 i lista zapisana");
     };
 
-    const style = document.createElement("style");
     style.innerHTML = `
         #blocker_container {
             position: fixed;
@@ -153,19 +203,6 @@ async function checkBlockedTab() {
     `;
     document.head.appendChild(style);
 
-    let string =    `
-                    <div id="blocker_container">
-                        <h1 id="blocker_title">Zablokowana domena:</h1>
-                        <h1 id="blocker_domain">${domain}</h1>
-                        <h2 id="blocker_amount"><span id="blocker_span">Ilość wejść:</span> ${found.visitCount}/${found.amount}</h2>
-
-                        <h3 id="blocker_brake">Przerwa:</h3>
-                        <h2 id="blocker_timerContainer"><span id="blocker_timer">${found.breakSpan}</span>s</h2>
-                        <button id="blocker_button">Wejdź</button>
-                    </div>
-                    `
-    const blockerDiv = document.createElement("div");
-    blockerDiv.id = `blocker_container`;
     blockerDiv.innerHTML = `<h1 id="blocker_title">Zablokowana domena:</h1>
                             <h1 id="blocker_domain">${domain}</h1>
                             <h2 id="blocker_amount"><span id="blocker_span">Ilość wejść:</span> ${found.visitCount}/${found.amount}</h2>
@@ -242,6 +279,5 @@ const isFromPreviousDay = (previousDate) => {
 const saveList = (message) => {
     chrome.storage.local.set({ list }, () => {
         console.log(message);
-        init();
     })
 }
