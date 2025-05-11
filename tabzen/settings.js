@@ -150,3 +150,5 @@ const getCurrentDay = (date) => {
 }
 
 init();
+
+// It is workin
